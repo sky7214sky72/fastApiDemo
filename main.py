@@ -33,3 +33,12 @@ def read_weather_detail(weather_id: int, db: Session = Depends(get_db)):
     weather = crud.get_weather_detail(db, weather_id)
     return weather
 
+
+@app.post("/weathers", response_model=schemas.Weather)
+def create_weather(weather: schemas.WeatherCreate, db: Session = Depends(get_db)):
+    return crud.create_weather(db, weather=weather)
+
+
+@app.delete("/weather/{weather_id}")
+def delete_weather(weather_id: int, db: Session = Depends(get_db)):
+    return crud.delete_weather(db, weather_id)

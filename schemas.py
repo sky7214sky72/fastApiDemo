@@ -10,8 +10,13 @@ class WeatherBase(BaseModel):
     area: str
     temperature: float
     sky: str
-    created_at: datetime
-    updated_at: datetime
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+
+
+class WeatherCreate(WeatherBase):
+    humidity: float
+    api_type: str
 
 
 class Weather(WeatherBase):
